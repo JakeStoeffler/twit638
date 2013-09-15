@@ -1,13 +1,33 @@
-if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to twit1.";
-  };
+Twits = new Meteor.Collection("twits");
 
-  Template.hello.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
+if (Meteor.isClient) {
+  console.log("Hey");
+  
+  Template.twitboard.twits = function() {
+    return Twits.find();
+  };
+  
+  $("button").on("click", function() {
+    console.log("YO");
+    Twits.insert(
+      {
+        text: $("#postText").val(),
+        author: "Bob",
+        time: new Date().getTime().toString()
+      });
+    return false;
+  });
+  
+  Template.post.events({
+    'click input#postSubmit': function() {
+      console.log("YO");
+      Twits.insert(
+        {
+          text: $("#postText").val(),
+          author: "Bob",
+          time: new Date().getTime().toString()
+        });
+      return false;
     }
   });
 }
