@@ -19,7 +19,7 @@ if (Meteor.isClient) {
   });
   
   Template.post.events({
-    'click input#postSubmit': function() {
+    'click #postSubmit': function() {
       console.log("YO");
       Twits.insert(
         {
