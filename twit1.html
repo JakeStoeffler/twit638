@@ -14,7 +14,16 @@
 
 <template name="post">
   <form>
-    <input id="postText" type="text" placeholder="Enter your twit here..." />
+    <input id="postText" type="text" placeholder="Enter your twit here..." maxlength="140" />
+    <br />
+    <select id="postMood">
+      <option value="" disabled="disabled" selected="selected">I'm feeling...</option>
+      <option>happy</option>
+      <option>sad</option>
+      <option>excited</option>
+      <option>nervous</option>
+      <option>apathetic</option>
+    </select>
     <button id="postSubmit" class="btn">Submit</button>
   </form>
 </template>
@@ -30,6 +39,7 @@
 <template name="twit">
   <div class="twit">
     <h3>{{text}}</h3>
+    <h4>I'm feeling {{mood}}</h4>
     <h4>{{author}}</h4>
     <h4>{{time}}</h4>
   </div>
